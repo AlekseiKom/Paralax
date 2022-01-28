@@ -4,7 +4,7 @@ window.onload = function() {
 const parallax = document.querySelector('.parallax')
 
 if (parallax) {
-  const content = document.querySelector('.parallax-content');
+  const content = document.querySelector('.parallax__container');
   const clouds = document.querySelector('.images-parallax__clouds');
   const mountains = document.querySelector('.images-parallax__mountains');
   const human = document.querySelector('.images-parallax__human');      
@@ -50,7 +50,7 @@ if (parallax) {
       thresholdSets.push(i);
     }
     const callback = function(entries, observer) {
-      const scrollTopProcent = window.pageYOffset / parallaxHeight * 100;
+      const scrollTopProcent = window.pageYOffset / parallax.parallaxHeight * 100;
       setParallaxItemsStyle(scrollTopProcent); 
     };
     const observer = new IntersectionObserver(callback, {
@@ -60,12 +60,10 @@ if (parallax) {
     observer.observe(document.querySelector('.content'));
 
     function setParallaxItemsStyle(scrollTopProcent) {
-      content.style.cssText = `transform: translate(0%, -${scrollTopProcent / 9}%); `;
-      mountains.parentElement.style.cssText = `transform: translate(0%, -${scrollTopProcent / 6}%); `;
-      human.parentElement.style.cssText = `transform: translate(0%, -${scrollTopProcent /3}%); `;
+      content.style.cssText = `transform: translate(0%, -${scrollTopProcent / 9}%);`;
+      mountains.parentElement.style.cssText = `transform: translate(0%, -${scrollTopProcent / 6}%);`;
+      human.parentElement.style.cssText = `transform: translate(0%, -${scrollTopProcent /3}%);`;
     }
-
-
 
   }
 }
